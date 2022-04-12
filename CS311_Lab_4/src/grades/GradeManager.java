@@ -1,9 +1,9 @@
 package grades;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-//	
+import java.io.InputStreamReader;	
 import java.util.HashMap;
+import java.util.Scanner;
 
 /** 
  * A GradeManager will create a command-line prompt that will let someone add grades
@@ -40,7 +40,14 @@ public class GradeManager {
 			// TODO: YOUR CODE HERE
 		} else if (grade.equals("c")) {
 			// TODO: YOUR CODE HERE
-		} 		
+		} else if (grade.equals("d")) {
+			// TODO: YOUR CODE HERE
+		} else if (grade.equals("f")) {
+			// TODO: YOUR CODE HERE
+		} else {
+			// TODO: YOUR CODE HERE
+			throw new InvalidGradeException("failed!");
+		}
 		// TODO: Add more cases in here
 		
 		// If grade doesn't match a valid grade, throw an InvalidGradeException
@@ -86,21 +93,30 @@ public class GradeManager {
 		
 		BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Starting... the grade manager");
-		
+		Scanner sc = new Scanner(System.in);
 		while (true) {
 				String input = "";
 				try {
 					input = cin.readLine();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
+//					throw new InvalidGradeException("failed!");
 					e.printStackTrace();
 				}
 				if (input.startsWith("add")) {
+//					throw new InvalidGradeException("hi");
 					// TODO: YOUR CODE HERE
-					gm.addGrade(input);
+//					try {
+						gm.addGrade(sc.next());
+//					} catch (InvalidGradeException e) {
+						// TODO Auto-generated catch block
+//						throw new InvalidGradeException("failed!");
+//						e.printStackTrace();
+//					}
 				} else if (input.equals("print")) {
 					// TODO: YOUR CODE HERE
-					gm.getHistString();
+//					gm.getHistString();
+					System.out.println(gm.getHistString());
 				}  else if (input.equals("exit")) {
 					break;
 				}
