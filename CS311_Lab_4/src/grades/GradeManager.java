@@ -1,4 +1,7 @@
 package grades;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 //	
 import java.util.HashMap;
 
@@ -76,24 +79,32 @@ public class GradeManager {
 	 *                       in a histogram format
 	 *    exit             : exits the program
 	 * @param args
+	 * 
 	 */
-//	public static void main(String[]  args) {
-//		GradeManager gm = new GradeManager();
-//		
-//		BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
-//		System.out.println("Starting the grade manager");
-//		
-//		while (true) {
-//				String input = cin.readLine();
-//				if (input.startsWith("add")) {
-//					// TODO: YOUR CODE HERE
-//				} else if (input.equals("print")) {
-//					// TODO: YOUR CODE HERE
-//				}  else if (input.equals("exit")) {
-//					break;
-//				}
-//			
-//		}
-//	}
+	public static void main(String[]  args) throws InvalidGradeException {
+		GradeManager gm = new GradeManager();
+		
+		BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Starting... the grade manager");
+		
+		while (true) {
+				String input = "";
+				try {
+					input = cin.readLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if (input.startsWith("add")) {
+					// TODO: YOUR CODE HERE
+					gm.addGrade(input);
+				} else if (input.equals("print")) {
+					// TODO: YOUR CODE HERE
+					gm.getHistString();
+				}  else if (input.equals("exit")) {
+					break;
+				}
+		}
+	}
 
 }
