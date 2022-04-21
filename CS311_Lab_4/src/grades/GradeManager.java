@@ -1,9 +1,9 @@
 package grades;
+
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;	
+import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Scanner;
 
 /** 
  * A GradeManager will create a command-line prompt that will let someone add grades
@@ -34,22 +34,18 @@ public class GradeManager {
 	 * @param grade - grade to add to this grad manager
 	 */
 	public void addGrade(String grade) throws InvalidGradeException {
-		if (grade.equals("a")) {
-			// TODO: YOUR CODE HERE
-		} else if (grade.equals("b")) {
-			// TODO: YOUR CODE HERE
-		} else if (grade.equals("c")) {
-			// TODO: YOUR CODE HERE
-		} else if (grade.equals("d")) {
-			// TODO: YOUR CODE HERE
-		} else if (grade.equals("f")) {
-			// TODO: YOUR CODE HERE
-		} else {
-			// TODO: YOUR CODE HERE
-			throw new InvalidGradeException("failed!");
-		}
-		// TODO: Add more cases in here
-		
+		if (grade.equals("A") || grade.equals("a")) {
+			this.allGrades.put(LetterGrade.A, this.allGrades.get(LetterGrade.A)+1);
+		} else if (grade.equals("B") || grade.equals("b")) {
+			this.allGrades.put(LetterGrade.B, this.allGrades.get(LetterGrade.B)+1);
+		} else if (grade.equals("C") || grade.equals("c")) {
+			this.allGrades.put(LetterGrade.C, this.allGrades.get(LetterGrade.C)+1);
+		} else if (grade.equals("D") || grade.equals("d")) {
+			this.allGrades.put(LetterGrade.D, this.allGrades.get(LetterGrade.D)+1);
+		} else if (grade.equals("F") || grade.equals("f")) {
+			this.allGrades.put(LetterGrade.F, this.allGrades.get(LetterGrade.F)+1);
+		} else
+			throw new InvalidGradeException("InvalidGradeException!");		
 		// If grade doesn't match a valid grade, throw an InvalidGradeException
 	}
 
@@ -58,8 +54,7 @@ public class GradeManager {
 	 *
 	 */
 	public void printHistogram() {
-		// TODO: YOUR CODE HERE
-		throw new RuntimeException("GradeManger.printHistogram() not yet implemented!");
+		System.out.println(getHistString());
 	}
 	
 	/**
@@ -86,40 +81,32 @@ public class GradeManager {
 	 *                       in a histogram format
 	 *    exit             : exits the program
 	 * @param args
-	 * 
+	 * @throws InvalidGradeException 
 	 */
 	public static void main(String[]  args) throws InvalidGradeException {
 		GradeManager gm = new GradeManager();
 		
 		BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Starting... the grade manager");
-		Scanner sc = new Scanner(System.in);
-		while (true) {
-				String input = "";
-				try {
+		System.out.println("\n"+"Starting... the grade manager");
+		try {
+			while (true) {
+					String input;
 					input = cin.readLine();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-//					throw new InvalidGradeException("failed!");
-					e.printStackTrace();
-				}
-				if (input.startsWith("add")) {
-//					throw new InvalidGradeException("hi");
-					// TODO: YOUR CODE HERE
-//					try {
-						gm.addGrade(sc.next());
-//					} catch (InvalidGradeException e) {
-						// TODO Auto-generated catch block
-//						throw new InvalidGradeException("failed!");
-//						e.printStackTrace();
-//					}
-				} else if (input.equals("print")) {
-					// TODO: YOUR CODE HERE
-//					gm.getHistString();
-					System.out.println(gm.getHistString());
-				}  else if (input.equals("exit")) {
-					break;
-				}
+					if (input.startsWith("add")) {
+						System.out.println("usgen unelgeegee oruulna uu?");
+						gm.addGrade(cin.readLine());
+					} else if (input.equals("print")) {
+						gm.printHistogram();
+					}  else if (input.equals("exit")) {
+						break;
+					}	
+			}
+		}catch(InvalidGradeException e) {
+			e.printIvalidGrade();
+			main(args);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 

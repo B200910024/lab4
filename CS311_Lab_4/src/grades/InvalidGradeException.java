@@ -9,4 +9,8 @@ public class InvalidGradeException extends Exception {
 	public InvalidGradeException(String message) {
 		super(message);	
 	}
+	
+	public void printIvalidGrade(){
+		System.err.print("usgen unelgee bolj cadahgui utga ugsun baina!");
+	}
 }
